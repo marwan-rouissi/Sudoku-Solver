@@ -8,7 +8,7 @@ class Bruteforce():
         self.goodone = 0
     
     """method to convert sudoku string to a matrix"""
-    def str_to_puzzle(self, s):
+    def str_to_puzzle(self, s:str):
 
         for i in range(len(s)):  
             if i % 9 == 0:
@@ -18,21 +18,21 @@ class Bruteforce():
                 self.puzzleSolution.append(temp)
     
     """method to check if element i and element j are on the same row"""
-    def same_row(self, i, j):
+    def same_row(self, i:int, j:int):
 
         if i//9 == j//9:
             return True
         return False
 
     """method to check if element i and element j are on the same column"""
-    def same_col(self, i, j):
+    def same_col(self, i:int, j:int):
 
         if i%9 == j%9:
             return True
         return False
 
     """method to check if element i and element j are on the same block"""
-    def same_block(self, i, j):
+    def same_block(self, i:int, j:int):
 
         if ((i//9)//3 == (j//9)//3) & ((i%9)//3 == (j%9)//3):
             return True
