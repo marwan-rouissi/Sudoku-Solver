@@ -1,5 +1,6 @@
 from solvers.bruteforce import *
 from solvers.backtracking import *
+from app import *
 
 class Game():
     
@@ -11,6 +12,7 @@ class Game():
         self.sudoku = []
         self.numSudoku = []
         row = ""
+        self.bla = 0
 
         for i in data:
             row += i
@@ -30,6 +32,7 @@ class Game():
             for col in row:
                 i = row.index(col)
                 if col == "_":
+                    self.bla += 1
                     row[i] = "0"
             res = [eval(col) for col in row]
             self.numSudoku.append(res)
@@ -81,6 +84,8 @@ class Game():
         self.drawSolvedPuzzle(bruteForce.puzzleSolution)
         print(f"{bruteForce.combinaisons} possible combinaisons")
         print(f"found on {bruteForce.goodone}th attempt")
+
+        return bruteForce.puzzleSolution
     
     "method to run the back tracking method from Backtracking class"
     def run_backtracking(self):
@@ -93,6 +98,7 @@ class Game():
         self.drawSolvedPuzzle(backtracking.puzzleSolution)
         print(f"{backtracking.combinaisons} possible combinaisons")
         print(f"found on {backtracking.goodone}th attempt")
+
 
 level_1 = "puzzles/sudoku.txt"
 level_2 = "puzzles/sudoku2.txt"
@@ -124,9 +130,17 @@ if __name__ == "__main__":
     print("PUZZLE TO SOLVE")
     print("--------------")
     game.draw(game.numSudoku)
+    # app.run_pygame()
     print("which method do you want to use ? (bruteforce / backtracking)")
     methodChoice = input()
     if methodChoice == "bruteforce":
         game.run_bruteforce()
+        soluce = game.run_bruteforce()
     if methodChoice == "backtracking":
         game.run_backtracking()
+        soluce = game.numSudoku
+    
+    print(f"field to fill = {game.bla}")
+    
+    app = App(game.sudoku, soluce)
+    app.run_pygame()
