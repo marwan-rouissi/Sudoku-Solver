@@ -2,7 +2,7 @@
 
 # Bruteforce vs Backtracking method
 
-| Levels | Field to fill | BrForce possibilities | BkTracking possibilities (solved on) |
+| Levels | Fields to fill | BrForce possibilities | BkTracking possibilities (solved on) |
 | ------ | ------------- | --------------------- | ------------------------------------ |
 | lvl 1  | 45            | 319                   | 254 (241th attempt)                  |
 | lvl 2  | 52            | 3 239                 | 1 368 (1 355th attempt)              |
